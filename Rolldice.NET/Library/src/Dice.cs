@@ -40,10 +40,9 @@ namespace Library
         {
             if (_dice.Allowed())
             {
-                var rand = new Random();
-                var diceValue = (int) _dice;
+                var rand = new Random();               
 
-                return rand.Next(1, diceValue);
+                return rand.Next(1, _dice.ConvertToInt());
             }
             throw new ArgumentException("_dice is not an allowed dice to be rolled");
         }
