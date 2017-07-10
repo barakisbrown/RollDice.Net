@@ -6,7 +6,7 @@
     /// </summary>
     public enum DiceTypes
     {
-        None,
+        None = 0,
         D3 = 3,
         D4 = 4,
         D6 = 6,
@@ -22,6 +22,11 @@
     /// </summary>
     public static class Extensions
     {
+        /// <summary>
+        /// Determine if the type given is an allowed DiceType
+        /// </summary>
+        /// <param name="type">DiceType</param>
+        /// <returns>bool true if allowed or false otherwise</returns>
         public static bool Allowed(this DiceTypes type)
         {
             bool retValue = false;
@@ -37,13 +42,51 @@
                 case DiceTypes.D12:
                 case DiceTypes.D20:
                 case DiceTypes.D100:
-                {
-                    retValue = true;
-                    break;
-                }
+                    {
+                        retValue = true;
+                        break;
+                    }
             }
 
             return retValue;
-        }     
+        }
+
+        /// <summary>
+        /// Helper funtion that will take a number and convert it to
+        /// DiceType.
+        /// </summary>
+        /// <param name="value">Int being converted to DiceType</param>
+        /// <returns>DiceType</returns>
+        public static DiceTypes ConvertToTypes(int value)
+        {
+            switch (value)
+            {
+                case 3:
+                    return DiceTypes.D3;
+                case 4:
+                    return DiceTypes.D4;
+                case 6:
+                    return DiceTypes.D6;
+                case 8:
+                    return DiceTypes.D8;
+                case 10:
+                    return DiceTypes.D10;
+                case 12:
+                    return DiceTypes.D12;
+                case 20:
+                    return DiceTypes.D20;
+                case 100:
+                    return DiceTypes.D100;
+                default:
+                    return DiceTypes.None;
+            }
+        }
+
+        /// <summary>
+        /// Converts the DiceType from enum to int
+        /// </summary>
+        /// <param name="type">DiceType</param>
+        /// <returns>int value of the DiceType</returns>
+        public static int ConvertToInt(this DiceTypes type) => (int) type;
     }
 }
