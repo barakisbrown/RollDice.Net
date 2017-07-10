@@ -10,6 +10,7 @@
         D3 = 3,
         D4 = 4,
         D6 = 6,
+        D8 = 8,
         D10 = 10,
         D12 = 12,
         D20 = 20,
@@ -31,6 +32,7 @@
                 case DiceTypes.D3:
                 case DiceTypes.D4:
                 case DiceTypes.D6:
+                case DiceTypes.D8:
                 case DiceTypes.D10:
                 case DiceTypes.D12:
                 case DiceTypes.D20:
@@ -42,6 +44,6 @@
             }
 
             return retValue;
-        }
+        }     
     }
 }
