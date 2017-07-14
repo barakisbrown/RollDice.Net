@@ -10,7 +10,7 @@ namespace Library
         /// <summary>
         /// Enum version of the type of die in question
         /// </summary>
-        protected DiceTypes Die { get; set; }
+        protected DiceTypes Die { get; set; } = DiceTypes.None;
 
         /// <summary>
         /// How many sides of the die [D6 => 6 is the sides]
@@ -42,7 +42,9 @@ namespace Library
             {
                 var rand = new Random();               
 
-                return rand.Next(1, _dice.ConvertToInt());
+                Amount = rand.Next(1, _dice.ConvertToInt());
+
+                return Amount;
             }
             throw new ArgumentException("_dice is not an allowed dice to be rolled");
         }
