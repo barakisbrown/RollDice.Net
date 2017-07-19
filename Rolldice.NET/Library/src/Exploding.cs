@@ -9,7 +9,7 @@
     /// </summary>
     public class Exploding : Dice
     {
-        private int _explodTargetNumber;
+        private readonly int _explodTargetNumber;
 
         /// <summary>
         /// Constructor needing what dice is rolled and what is the target number that is consider to explode
@@ -22,11 +22,34 @@
             Die = diceToBeRolled;
             Sides = Die.ConvertToInt();
             _explodTargetNumber = explodeTargetNumber;
+            Initialize();
         }
 
+        /// <summary>
+        /// This assumes that your looking for dice that will explode(roll again) if its hits a certain number.
+        /// Most games assume the largest number of the die possible(D6 => 6) but I made it where you can decide
+        /// differently
+        /// </summary>
+        /// <returns>returns the value of the total rolled(if its rolled again)</returns>
         public override int RollDie()
         {
-            throw new System.NotImplementedException();
+            var result = RollDie(Die);
+            var totalRolled = 0;
+
+            if (result != _explodTargetNumber)
+                return result;
+            else
+            {
+                do
+                {
+                    totalRolled += result;
+                    result = RollDie(Die);
+                } while (result == _explodTargetNumber);
+
+                totalRolled += result;
+            }
+
+            return totalRolled;
         }
     }
 }
