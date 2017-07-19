@@ -8,6 +8,11 @@ namespace Library
     public abstract class Dice
     {
         /// <summary>
+        /// 
+        /// </summary>
+        private Random rand;
+
+        /// <summary>
         /// Enum version of the type of die in question
         /// </summary>
         protected DiceTypes Die { get; set; } = DiceTypes.None;
@@ -39,14 +44,19 @@ namespace Library
         public int RollDie(DiceTypes _dice)
         {
             if (_dice.Allowed())
-            {
-                var rand = new Random();               
+            {               
+                var result = rand.Next(1, _dice.ConvertToInt() + 1);
 
-                Amount = rand.Next(1, _dice.ConvertToInt());
-
-                return Amount;
+                Amount = result;
+                return result;
             }
             throw new ArgumentException("_dice is not an allowed dice to be rolled");
+        }
+
+        public bool Initialize()
+        {
+            rand = new Random();
+            return true;
         }
     }
 }
