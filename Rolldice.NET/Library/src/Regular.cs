@@ -18,6 +18,7 @@ namespace Library
         {
             Die = die;
             Sides = Die.ConvertToInt();
+            Initialize();
         }
 
         /// <summary>
