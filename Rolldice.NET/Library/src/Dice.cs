@@ -25,7 +25,7 @@ namespace Library
         /// <summary>
         /// The amount on the die[D6 rolled would be a number between 1 .. 6]
         /// </summary>
-        protected int Amount { get; set; }
+        public int Amount { get; set; }
 
         /// <summary>
         /// Generic function to Roll the above die
