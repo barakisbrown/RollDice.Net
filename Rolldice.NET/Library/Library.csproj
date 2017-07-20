@@ -63,6 +63,7 @@
     <Compile Include="src\DiceTypes.cs" />
     <Compile Include="src\Exploding.cs" />
     <Compile Include="src\Regular.cs" />
+    <Compile Include="src\Success.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
